@@ -20,7 +20,7 @@ jobs:
         runs-on: ubuntu-latest
         env:
             GH_PAT: ${{ secrets.PMW_CI_PAT }}
-            GH_USER_NAME: vacmg
+            GH_USER_NAME: ${{ vars.PMW_CI_PAT_USERNAME }}
 
         steps:
             -   name: "Import GitHub credentials" # ~/.gitconfig

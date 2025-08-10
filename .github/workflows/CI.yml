@@ -72,14 +72,8 @@ jobs:
                     key: "${{ runner.os }}-${{ hashFiles('Source/**', 'Tests/**') }}-build"
                     path: 'build'
 
-            -   name: List build directory
-                run: ls -la build
-
-            -   name: List build/Tests directory
-                run: ls -la build/Tests
-
             -   name: Test
-                run: build/Tests/*_GoogleTestsExe
+                run: build/Tests/*_GoogleTest*
 
             -   name: Install Coverage Report tool
                 run: sudo apt-get update && sudo apt-get install -y gcovr

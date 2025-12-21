@@ -4,7 +4,7 @@ set(FETCHCONTENT_QUIET OFF)
 FetchContent_Declare(
         CANInterface
         GIT_REPOSITORY  git@github.com:purifymywater/CANInterface.git
-        GIT_TAG         v1.0.0
+        GIT_TAG         v0.1.1
 )
 FetchContent_MakeAvailable(CANInterface)
 

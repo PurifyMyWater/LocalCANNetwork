@@ -3,8 +3,8 @@ set(FETCHCONTENT_QUIET OFF)
 
 FetchContent_Declare(
         CANInterface
-        GIT_REPOSITORY  git@github.com:purifymywater/CANInterface.git
-        GIT_TAG         v0.1.1
+        GIT_REPOSITORY  git@github.com:PurifyMyWater/CANInterface.git
+        GIT_TAG         adapt-canFrame-to-v2-driver
 )
 FetchContent_MakeAvailable(CANInterface)
 

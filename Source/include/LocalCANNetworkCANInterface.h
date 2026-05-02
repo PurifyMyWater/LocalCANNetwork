@@ -12,12 +12,11 @@
 class LocalCANNetworkCANInterface : public CANInterface
 {
 public:
-    uint32_t frameAvailable() override;
-    bool     readFrame(CANFrame* frame) override;
-    bool     writeFrame(CANFrame* frame) override;
-    bool     active() override;
-
-    ACKResult getWriteFrameACK() override;
+    CANEvent getEvent(uint32_t maxTimeToWait_ms);
+    bool     sendFrame(const CANFrame& frame, int32_t maxTimeToWait_ms);
+    bool     disable();
+    bool     enable();
+    bool     recoverFromBusOff();
 
     [[nodiscard]] uint32_t getNodeID() const;
 

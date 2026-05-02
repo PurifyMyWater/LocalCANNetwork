@@ -7,32 +7,30 @@ LocalCANNetworkCANInterface::LocalCANNetworkCANInterface(LocalCANNetwork* networ
     this->nodeID  = nodeID;
 }
 
-uint32_t LocalCANNetworkCANInterface::frameAvailable()
+CANEvent LocalCANNetworkCANInterface::getEvent(uint32_t maxTimeToWait_ms)
 {
-    return network->frameAvailable(nodeID);
+    return nullptr;
 }
 
-bool LocalCANNetworkCANInterface::readFrame(CANFrame* frame)
-{
-    // OSInterfaceLogDebug(tag, "Reading frame");
-    return network->readFrame(nodeID, frame);
-}
-
-bool LocalCANNetworkCANInterface::writeFrame(CANFrame* frame)
+bool LocalCANNetworkCANInterface::sendFrame(const CANFrame& frame, int32_t maxTimeToWait_ms)
 {
     // OSInterfaceLogDebug(tag, "Writing frame with N_AI=%s: ", nAiToString(frame->identifier));
     return network->writeFrame(nodeID, frame);
 }
 
-bool LocalCANNetworkCANInterface::active()
+bool LocalCANNetworkCANInterface::disable()
 {
     return network->active();
 }
 
-ACKResult LocalCANNetworkCANInterface::getWriteFrameACK()
+bool LocalCANNetworkCANInterface::enable()
 {
-    // OSInterfaceLogVerbose(tag, "Getting write frame ACK for node ID %" PRIu8, nodeID);
-    return network->getWriteFrameACK(nodeID);
+    return network->active();
+}
+
+bool LocalCANNetworkCANInterface::recoverFromBusOff()
+{
+    return network->active();
 }
 
 uint32_t LocalCANNetworkCANInterface::getNodeID() const
